@@ -199,48 +199,56 @@ that can flawlessly accomplish a vast array of generative tasks at unprecedented
     <div className="absolute top-0 left-1.5 w-0.5 h-full bg-purple-400" />
 
     <ul className="space-y-6"> {/* 间距从 12 缩小到 6 */}
-  {[
-    {
-      date: 'Feb 2026',
-      content: (
-        <>
-          🎉 <span className="font-medium">Stand-In was accepted by <span className="text-blue-500">CVPR 2026!</span> See you in Denver!</span>
-        </>
-      ),
-    },
-    {
-      date: 'Sep 2025',
-      content: (
-        <>
-          💼 <span className="font-medium">Joined <span className="text-blue-500">ByteDance</span> as an Algorithm Intern.</span>
-        </>
-      ),
-    },
-    {
-      date: 'Apr 2025',
-      content: (
-        <>
-          🚀 <span className="font-medium">Released my new academic homepage!</span> Feel free to reach out!
-        </>
-      ),
-    },
-    {
-      date: 'Apr 2025',
-      content: (
-        <>
-          🎓 <span className="font-medium">Started a new research journey as an intern at <a href="https://hanlab.mit.edu" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline hover:text-purple-700">MIT Han Lab</a>!</span>
-        </>
-      ),
-    },
-    {
-      date: 'Nov 2024',
-      content: (
-        <>
-          💼 <span className="font-medium">Worked as an Algorithm Intern at <span className="text-blue-500">Tencent</span>.</span>
-        </>
-      ),
-    },
-  ].map((item, index) => (
+      {[
+        {
+          date: 'May 2026',
+          content: (
+            <>
+              🎉 <span className="font-medium">FourTune was accepted by <span className="text-blue-500">ICML 2026!</span> More details coming soon.</span>
+            </>
+          ),
+        },
+        {
+          date: 'Feb 2026',
+          content: (
+            <>
+              🎉 <span className="font-medium">Stand-In was accepted by <span className="text-blue-500">CVPR 2026!</span> See you in Denver!</span>
+            </>
+          ),
+        },
+        {
+          date: 'Sep 2025',
+          content: (
+            <>
+              💼 <span className="font-medium">Joined <span className="text-blue-500">ByteDance</span> as an Algorithm Intern.</span>
+            </>
+          ),
+        },
+        {
+          date: 'Apr 2025',
+          content: (
+            <>
+              🚀 <span className="font-medium">Released my new academic homepage!</span> Feel free to reach out!
+            </>
+          ),
+        },
+        {
+          date: 'Apr 2025',
+          content: (
+            <>
+              🎓 <span className="font-medium">Started a new research journey as an intern at <a href="https://hanlab.mit.edu" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline hover:text-purple-700">MIT Han Lab</a>!</span>
+            </>
+          ),
+        },
+        {
+          date: 'Nov 2024',
+          content: (
+            <>
+              💼 <span className="font-medium">Worked as an Algorithm Intern at <span className="text-blue-500">Tencent</span>.</span>
+            </>
+          ),
+        },
+      ].map((item, index) => (
     <li key={index} className="relative flex items-start gap-4">
       <div className="w-2.5 h-2.5 bg-purple-500 rounded-full z-10 shrink-0 mt-1.5" />
 

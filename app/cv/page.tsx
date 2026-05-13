@@ -51,9 +51,14 @@ export default function CVPage() {
             
             <li className="flex gap-3">
               <span className="font-semibold text-gray-500">[2]</span>
-              <p className="leading-relaxed">
-                <strong>Bowen Xue</strong>*, Zihan Min*, Xingyang Li*, Muyang Li, Yujun Lin, Zhekai Zhang, Haocheng Xi, Lvmin Zhang, Maneesh Agrawala, Jun-Yan Zhu, and Song Han, <span className="italic">FourTune: Towards Fully 4-Bit Efficient Post-Training for Diffusion Models</span>.
-              </p>
+              <div>
+                <p className="leading-relaxed">
+                  <strong>Bowen Xue</strong>*, Zihan Min*, Xingyang Li*, Muyang Li, Yujun Lin, Zhekai Zhang, Haocheng Xi, Lvmin Zhang, Maneesh Agrawala, Jun-Yan Zhu, and Song Han, <span className="italic">FourTune: Towards Fully 4-Bit Efficient Post-Training for Diffusion Models</span>.
+                </p>
+                <div className="flex flex-wrap items-center gap-3 mt-2 text-sm">
+                  <span className="font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-md">ICML 2026</span>
+                </div>
+              </div>
             </li>
 
             <li className="flex gap-3">
@@ -95,7 +100,7 @@ export default function CVPage() {
             <p className="text-sm text-gray-700 mb-2">Research intern (Remote)</p>
             <ul className="list-disc pl-5 mt-2 text-gray-700 space-y-2">
               <li>
-                Designed <strong><span className="italic">FourTune</span></strong>, the first training framework for diffusion models with 4-bit weights, activations, and gradients. Reduced VRAM usage by 2.25× and accelerated training by 2.27× on FLUX.1-dev compared to 16-bit LoRA, while supporting Qwen-Image. Achieved full-precision performance in Customization, RL, and Distillation tasks.
+                Designed <strong><span className="italic">FourTune</span></strong> (<span className="text-purple-700 font-bold">ICML 2026</span>), the first training framework for diffusion models with 4-bit weights, activations, and gradients. Reduced VRAM usage by 2.25× and accelerated training by 2.27× on FLUX.1-dev compared to 16-bit LoRA, while supporting Qwen-Image. Achieved full-precision performance in Customization, RL, and Distillation tasks.
               </li>
               <li>
                 Core contributor to <Link href="https://github.com/nunchaku-tech/nunchaku" className="text-purple-700 font-bold hover:underline" target="_blank">nunchaku (3.7K Stars)</Link> and <Link href="https://github.com/nunchaku-tech/ComfyUI-nunchaku" className="text-purple-700 font-bold hover:underline" target="_blank">ComfyUI-nunchaku (2.8K Stars)</Link>. <br />
