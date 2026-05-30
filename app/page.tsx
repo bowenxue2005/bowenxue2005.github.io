@@ -1,45 +1,12 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaGithub } from 'react-icons/fa';
+import { SiGooglescholar } from 'react-icons/si';
 import SpotlightCard from './components/SpotlightCard';
 
 export default function HomePage() {
-  const avatarCardRef = useRef<HTMLDivElement>(null);
-  const [isAvatarPopoverOpen, setIsAvatarPopoverOpen] = useState(false);
-
-  const dismissAvatarPopover = useCallback(() => {
-    setIsAvatarPopoverOpen(false);
-
-    const activeElement = document.activeElement;
-    if (
-      activeElement instanceof HTMLElement &&
-      avatarCardRef.current?.contains(activeElement)
-    ) {
-      activeElement.blur();
-    }
-  }, []);
-
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        dismissAvatarPopover();
-      }
-    };
-
-    window.addEventListener('blur', dismissAvatarPopover);
-    window.addEventListener('pagehide', dismissAvatarPopover);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    return () => {
-      window.removeEventListener('blur', dismissAvatarPopover);
-      window.removeEventListener('pagehide', dismissAvatarPopover);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, [dismissAvatarPopover]);
-
 const publications = [
   {
     video: 'video/Stand-In.mp4',
@@ -71,66 +38,14 @@ const publications = [
         transition={{ duration: 0.6 }}
         className="bg-white/70 backdrop-blur-md shadow-xl rounded-2xl p-6 flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6"
       >
-        <div
-          ref={avatarCardRef}
-          tabIndex={0}
-          aria-describedby="also-check-out-yujia"
-          onMouseEnter={() => setIsAvatarPopoverOpen(true)}
-          onMouseLeave={() => setIsAvatarPopoverOpen(false)}
-          onFocus={() => setIsAvatarPopoverOpen(true)}
-          onBlur={(event) => {
-            const nextFocusedElement = event.relatedTarget;
-            if (
-              !(nextFocusedElement instanceof Node) ||
-              !event.currentTarget.contains(nextFocusedElement)
-            ) {
-              setIsAvatarPopoverOpen(false);
-            }
-          }}
-          onKeyDown={(event) => {
-            if (event.key === 'Escape') {
-              dismissAvatarPopover();
-            }
-          }}
-          className="relative shrink-0 rounded-[1.35rem] focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-200 focus-visible:ring-offset-4 focus-visible:ring-offset-white/60"
-        >
+        <div className="shrink-0">
           <Image
             src="/avatar.jpg"
             alt="Avatar"
             width={120}
             height={120}
-            className={`rounded-xl border border-white/80 shadow-md transition-all duration-300 ease-out ${
-              isAvatarPopoverOpen ? '-translate-y-0.5 shadow-xl' : ''
-            }`}
+            className="rounded-xl border border-white/80 shadow-md"
           />
-
-          <div
-            aria-hidden="true"
-            className="absolute left-1/2 top-full z-10 h-5 w-40 -translate-x-1/2"
-          />
-
-          <div
-            id="also-check-out-yujia"
-            className={`absolute left-1/2 top-full z-20 mt-2 w-max min-w-52 -translate-x-1/2 rounded-2xl border border-purple-100 bg-white/90 px-4 py-3 text-left shadow-[0_18px_45px_rgba(88,28,135,0.14)] backdrop-blur-md transition-all duration-300 ease-out ${
-              isAvatarPopoverOpen
-                ? 'pointer-events-auto translate-y-0 scale-100 opacity-100'
-                : 'pointer-events-none translate-y-2 scale-95 opacity-0'
-            }`}
-          >
-            <div className="absolute left-1/2 top-0 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rotate-45 border-l border-t border-purple-100 bg-white/90" />
-            <p className="text-sm font-medium text-gray-700">
-              Also check out:{' '}
-              <a
-                href="https://www.yujiazeng.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={dismissAvatarPopover}
-                className="font-medium text-blue-500 underline underline-offset-2 transition-colors duration-200 hover:text-blue-600 focus-visible:text-blue-600 focus-visible:outline-none"
-              >
-                Yujia
-              </a>.
-            </p>
-          </div>
         </div>
         <div>
           <h1 className="text-3xl font-bold">Bowen Xue (薛博文)</h1>
@@ -147,8 +62,31 @@ const publications = [
                     {' '}and Tencent. I explore generative models and am actively seeking Fall 2027 PhD opportunities.
                   </p>
               <div className="flex space-x-4 text-xl text-gray-700 mt-3">
-                <a href="mailto:bowenxue2005@gmail.com" aria-label="Email"><FaEnvelope /></a>
-                <a href="https://github.com/KBRASK" target="_blank" aria-label="GitHub"><FaGithub /></a>
+                <a
+                  href="mailto:bowenxue2005@gmail.com"
+                  aria-label="Email"
+                  className="transition-colors duration-200 hover:text-purple-600 focus-visible:text-purple-600 focus-visible:outline-none"
+                >
+                  <FaEnvelope />
+                </a>
+                <a
+                  href="https://scholar.google.com/citations?user=PLeb2oAAAAAJ&hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Google Scholar"
+                  className="transition-colors duration-200 hover:text-purple-600 focus-visible:text-purple-600 focus-visible:outline-none"
+                >
+                  <SiGooglescholar />
+                </a>
+                <a
+                  href="https://github.com/KBRASK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className="transition-colors duration-200 hover:text-purple-600 focus-visible:text-purple-600 focus-visible:outline-none"
+                >
+                  <FaGithub />
+                </a>
               </div>
             </div>
       </motion.div>
