@@ -92,7 +92,7 @@ const publications = [
       </motion.div>
 
       {/* 研究兴趣 & 目标 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-6 mt-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ const publications = [
           className="bg-white p-5 rounded-xl shadow-md"
         >
           <h2 className="text-xl font-semibold mb-2">🎯 Research Interests</h2>
-          <p>Generative models, Image generation, Video generation, diffusion models, large model acceleration.</p>
+          <p>Visual Generation: Image Generation, Video Generation, World Models, Efficient Visual Generation.</p>
           </motion.div>
 
         <motion.div
@@ -112,10 +112,10 @@ const publications = [
           className="bg-white p-5 rounded-xl shadow-md"
         >
           <h2 className="text-xl font-semibold mb-2">🔍 Goal</h2>
-          <p>My ultimate ambition is to revolutionize generative AI models, making them
-significantly faster, better, and more versatile. My dream is to develop generative AI models
-that can flawlessly accomplish a vast array of generative tasks at unprecedented quality.
-</p>
+          <p className="text-pretty">
+            Making visual generation controllable as well as impressive. I study how to
+            translate human intent into visual content faithfully, efficiently, and at scale.
+          </p>
         </motion.div>
       </div>
 
