@@ -91,10 +91,10 @@ export default function CVPage() {
             <p className="text-sm text-slate-500 mt-4">Long Video Generation, AR Diffusion</p>
           </div>
 
-          {/* MIT HANLab */}
+          {/* MIT HAN Lab */}
           <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md">
             <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-1">
-              <p className="font-semibold text-lg text-slate-800">MIT HANLab</p>
+              <p className="font-semibold text-lg text-slate-800">MIT HAN Lab</p>
               <p className="text-sm text-gray-600">Apr. 2025 – Feb. 2026</p>
             </div>
             <p className="text-sm text-gray-700 mb-2">Research intern (Remote)</p>

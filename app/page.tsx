@@ -57,7 +57,7 @@ const publications = [
                       rel="noopener noreferrer"
                       className="text-blue-500 underline hover:text-blue-600"
                     >
-                      MIT HanLab
+                      MIT HAN Lab
                     </a>
                     {' '}and Tencent. I explore generative models and am actively seeking Fall 2027 PhD opportunities.
                   </p>
@@ -166,7 +166,7 @@ const publications = [
           date: 'Apr 2025',
           content: (
             <>
-              🎓 <span className="font-medium">Started a new research journey as an intern at <a href="https://hanlab.mit.edu" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline hover:text-purple-700">MIT Han Lab</a>!</span>
+              🎓 <span className="font-medium">Started a new research journey as an intern at <a href="https://hanlab.mit.edu" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline hover:text-purple-700">MIT HAN Lab</a>!</span>
             </>
           ),
         },
