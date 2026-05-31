@@ -166,7 +166,7 @@ const publications = [
           date: 'Sep 2025',
           content: (
             <>
-              💼 <span className="font-medium">Joined <span className="text-blue-500">ByteDance</span> as an Algorithm Intern.</span>
+              💼 <span className="font-medium">Joined <span className="text-blue-500">ByteDance</span> as a research intern.</span>
             </>
           ),
         },
@@ -182,7 +182,7 @@ const publications = [
           date: 'Nov 2024',
           content: (
             <>
-              💼 <span className="font-medium">Worked as an Algorithm Intern at <span className="text-blue-500">Tencent</span>.</span>
+              💼 <span className="font-medium">Worked as a research intern at <span className="text-blue-500">Tencent</span>.</span>
             </>
           ),
         },
