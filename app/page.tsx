@@ -166,14 +166,6 @@ const publications = [
           date: 'Apr 2025',
           content: (
             <>
-              🚀 <span className="font-medium">Released my new academic homepage!</span> Feel free to reach out!
-            </>
-          ),
-        },
-        {
-          date: 'Apr 2025',
-          content: (
-            <>
               🎓 <span className="font-medium">Started a new research journey as an intern at <a href="https://hanlab.mit.edu" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline hover:text-purple-700">MIT Han Lab</a>!</span>
             </>
           ),
