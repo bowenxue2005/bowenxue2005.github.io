@@ -38,7 +38,7 @@ const publications = [
         transition={{ duration: 0.6 }}
         className="bg-white/70 backdrop-blur-md shadow-xl rounded-2xl p-6 flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6"
       >
-        <div className="shrink-0">
+        <div className="shrink-0 flex flex-col items-center gap-4">
           <Image
             src="/avatar.jpg"
             alt="Avatar"
@@ -46,11 +46,38 @@ const publications = [
             height={120}
             className="rounded-xl border border-white/80 shadow-md"
           />
+          <div className="flex space-x-4 text-xl text-gray-700">
+            <a
+              href="mailto:bowenxue2005@gmail.com"
+              aria-label="Email"
+              className="transition-colors duration-200 hover:text-purple-600 focus-visible:text-purple-600 focus-visible:outline-none"
+            >
+              <FaEnvelope />
+            </a>
+            <a
+              href="https://scholar.google.com/citations?user=PLeb2oAAAAAJ&hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Scholar"
+              className="transition-colors duration-200 hover:text-purple-600 focus-visible:text-purple-600 focus-visible:outline-none"
+            >
+              <SiGooglescholar />
+            </a>
+            <a
+              href="https://github.com/KBRASK"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="transition-colors duration-200 hover:text-purple-600 focus-visible:text-purple-600 focus-visible:outline-none"
+            >
+              <FaGithub />
+            </a>
+          </div>
         </div>
         <div>
           <h1 className="text-3xl font-bold">Bowen Xue (薛博文)</h1>
-          <p className="text-gray-700 mt-2 max-w-xl">
-                    I am a third-year undergrad at USTC, currently an algorithm intern at ByteDance. Previously, I interned at{' '}
+          <p className="text-gray-700 mt-2 max-w-xl text-pretty">
+                    I am a third-year undergraduate at USTC, currently a research intern with Prof. Jiajun Wu at Stanford University. Previously, I interned at ByteDance,{' '}
                     <a
                       href="https://hanlab.mit.edu"
                       target="_blank"
@@ -59,35 +86,8 @@ const publications = [
                     >
                       MIT HAN Lab
                     </a>
-                    {' '}and Tencent. I explore generative models and am actively seeking Fall 2027 PhD opportunities.
+                    {', '}and Tencent. I explore visual generation and am actively seeking Fall 2027 PhD opportunities.
                   </p>
-              <div className="flex space-x-4 text-xl text-gray-700 mt-3">
-                <a
-                  href="mailto:bowenxue2005@gmail.com"
-                  aria-label="Email"
-                  className="transition-colors duration-200 hover:text-purple-600 focus-visible:text-purple-600 focus-visible:outline-none"
-                >
-                  <FaEnvelope />
-                </a>
-                <a
-                  href="https://scholar.google.com/citations?user=PLeb2oAAAAAJ&hl=en"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Google Scholar"
-                  className="transition-colors duration-200 hover:text-purple-600 focus-visible:text-purple-600 focus-visible:outline-none"
-                >
-                  <SiGooglescholar />
-                </a>
-                <a
-                  href="https://github.com/KBRASK"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  className="transition-colors duration-200 hover:text-purple-600 focus-visible:text-purple-600 focus-visible:outline-none"
-                >
-                  <FaGithub />
-                </a>
-              </div>
             </div>
       </motion.div>
 
@@ -138,6 +138,14 @@ const publications = [
 
     <ul className="space-y-6"> {/* 间距从 12 缩小到 6 */}
       {[
+        {
+          date: 'Jun 2026',
+          content: (
+            <>
+              🎓 <span className="font-medium">Started as a research intern in Prof. Jiajun Wu&apos;s group at <span className="text-blue-500">Stanford University</span>.</span>
+            </>
+          ),
+        },
         {
           date: 'May 2026',
           content: (
