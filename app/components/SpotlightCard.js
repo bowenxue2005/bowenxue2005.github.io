@@ -176,7 +176,7 @@ function DesktopCard({ publication }) {
               </div>
               <div style={{ transform: 'translateZ(35px) translateY(-3px)' }} className="flex flex-col justify-center h-full">
                 <div>
-                  <h3 className="text-xs sm:text-base md:text-xl font-bold text-slate-800">{publication.title}</h3>
+                  <h3 className="text-xs sm:text-base md:text-[19px] font-bold text-slate-800">{publication.title}</h3>
                   <p className="text-xs md:text-sm text-slate-500 mt-1">{publication.authors}</p>
                 </div>
                 

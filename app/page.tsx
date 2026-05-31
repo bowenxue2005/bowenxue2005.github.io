@@ -11,7 +11,7 @@ const publications = [
   {
     video: 'video/Stand-In.mp4',
     title: 'Stand-In: A Lightweight and Plug-and-Play Identity Control for Video Generation',
-    authors: 'Bowen Xue, Qixin Yan, Wenjing Wang, Hao Liu, Chen Li',
+    authors: 'Bowen Xue*, Zheng-Peng Duan*, Qixin Yan, Wenjing Wang, Hao Liu, Chun-Le Guo, Chongyi Li, Chen Li, and Jing LYU',
     venue: 'CVPR 2026',
     shortDescription: 'Stand-In trains just 1% of the original model’s parameters with 2,000 video–prompt pairs, yet achieves high-quality identity-preserving video generation.',
     description: 'This was my first complete research project. Ten days after releasing it on GitHub, Stand-In gained over 500 stars, and my work was accepted by the community. During that period, I almost refreshed the star count every day whenever I had free time, actively responded to issues, and improved the project as planned. Later, when the tide receded, everything almost returned to normal—except that I kept working hard: maintaining the project and preparing for the next, more solid one.',
