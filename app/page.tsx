@@ -29,16 +29,16 @@ const publications = [
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -30 }}
       transition={{ duration: 0.5 }}
-      className="pt-24 px-4 py-12 min-h-screen max-w-4xl mx-auto text-gray-800"
+      className="px-4 pt-20 pb-10 sm:pt-24 sm:py-12 min-h-screen max-w-4xl mx-auto text-gray-800"
     >
       {/* 顶部卡片 */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="bg-white/70 backdrop-blur-md shadow-xl rounded-2xl p-6 flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6"
+        className="bg-white/70 backdrop-blur-md shadow-xl rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center sm:items-start space-y-5 sm:space-y-0 sm:space-x-6"
       >
-        <div className="shrink-0 flex flex-col items-center gap-4">
+        <div className="shrink-0 flex flex-col items-center gap-3 sm:gap-4">
           <Image
             src="/avatar.jpg"
             alt="Avatar"
@@ -46,7 +46,7 @@ const publications = [
             height={120}
             className="rounded-xl border border-white/80 shadow-md"
           />
-          <div className="flex space-x-4 text-xl text-gray-700">
+          <div className="flex space-x-5 text-[21px] text-gray-700 sm:space-x-4 sm:text-xl">
             <a
               href="mailto:bowenxue2005@gmail.com"
               aria-label="Email"
@@ -74,9 +74,9 @@ const publications = [
             </a>
           </div>
         </div>
-        <div>
-          <h1 className="text-3xl font-bold">Bowen Xue (薛博文)</h1>
-          <p className="text-gray-700 mt-2 max-w-xl text-pretty">
+        <div className="w-full min-w-0 sm:w-auto">
+          <h1 className="text-center text-[27px] font-bold leading-tight sm:text-left sm:text-3xl">Bowen Xue (薛博文)</h1>
+          <p className="mt-3 text-left text-[15px] leading-relaxed text-gray-700 text-pretty sm:mt-2 sm:max-w-xl sm:text-base sm:leading-normal">
                     I am a third-year undergraduate at USTC, currently a research intern with Prof. Jiajun Wu at Stanford University. Previously, I interned at ByteDance,{' '}
                     <a
                       href="https://hanlab.mit.edu"
@@ -92,16 +92,16 @@ const publications = [
       </motion.div>
 
       {/* 研究兴趣 & 目标 */}
-      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-6 mt-12">
+      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-5 sm:gap-6 mt-10 sm:mt-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="bg-white p-5 rounded-xl shadow-md"
+          className="bg-white p-4 sm:p-5 rounded-xl shadow-md"
         >
-          <h2 className="text-xl font-semibold mb-2">🎯 Research Interests</h2>
-          <p>Visual Generation: Image Generation, Video Generation, World Models, Efficient Visual Generation.</p>
+          <h2 className="text-lg sm:text-xl font-semibold mb-2">🎯 Research Interests</h2>
+          <p className="text-[15px] leading-relaxed sm:text-base sm:leading-normal">Visual Generation: Image Generation, Video Generation, World Models, Efficient Visual Generation.</p>
           </motion.div>
 
         <motion.div
@@ -109,10 +109,10 @@ const publications = [
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="bg-white p-5 rounded-xl shadow-md"
+          className="bg-white p-4 sm:p-5 rounded-xl shadow-md"
         >
-          <h2 className="text-xl font-semibold mb-2">🔍 Goal</h2>
-          <p className="text-pretty">
+          <h2 className="text-lg sm:text-xl font-semibold mb-2">🔍 Goal</h2>
+          <p className="text-pretty text-[15px] leading-relaxed sm:text-base sm:leading-normal">
             Making visual generation controllable as well as impressive. I study how to
             translate human intent into visual content faithfully, efficiently, and at scale.
           </p>
@@ -125,18 +125,18 @@ const publications = [
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="mt-12"
+        className="mt-10 sm:mt-12"
       >
-<section className="mt-12">
+<section className="mt-10 sm:mt-12">
   <h2 className="text-xl font-bold flex items-center gap-2 mb-6">
     📰 News
   </h2>
 
-  <div className="relative pl-6">
+  <div className="relative pl-5 sm:pl-6">
     {/* 主时间线 */}
     <div className="absolute top-0 left-1.5 w-0.5 h-full bg-purple-400" />
 
-    <ul className="space-y-6"> {/* 间距从 12 缩小到 6 */}
+    <ul className="space-y-5 sm:space-y-6"> {/* 间距从 12 缩小到 6 */}
       {[
         {
           date: 'Jun 2026',
@@ -187,14 +187,14 @@ const publications = [
           ),
         },
       ].map((item, index) => (
-    <li key={index} className="relative flex items-start gap-4">
+    <li key={index} className="relative flex items-start gap-3 sm:gap-4">
       <div className="w-2.5 h-2.5 bg-purple-500 rounded-full z-10 shrink-0 mt-1.5" />
 
       <div className="flex flex-col sm:flex-row sm:gap-4 w-full">
-        <time className="text-base font-semibold text-gray-400 sm:w-20 shrink-0 tabular-nums">
+        <time className="text-sm sm:text-base font-semibold text-gray-400 sm:w-20 shrink-0 tabular-nums">
           {item.date}
         </time>
-        <div className="text-base text-gray-800 leading-relaxed">
+        <div className="text-[15px] sm:text-base text-gray-800 leading-relaxed">
           {item.content}
         </div>
       </div>
@@ -205,8 +205,8 @@ const publications = [
 </section>
       </motion.div>
 
-<section className="mt-12">
-  <h2 className="text-2xl font-bold mb-6">📝 Publications</h2>
+<section className="mt-10 sm:mt-12">
+  <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">📝 Publications</h2>
   <div className="space-y-8">
     {publications.map((pub, index) => (
       <SpotlightCard key={index} publication={pub} />
