@@ -9,6 +9,17 @@ import SpotlightCard from './components/SpotlightCard';
 export default function HomePage() {
 const publications = [
   {
+    image: '/figure/FourTune.png',
+    title: 'FourTune: Towards Fully 4-Bit Efficient Post-Training for Diffusion Models',
+    authors: 'Bowen Xue*, Zihan Min*, Xingyang Li*, Zhekai Zhang, Haocheng Xi, Lvmin Zhang, Maneesh Agrawala, Jun-Yan Zhu, Song Han, Yujun Lin, and Muyang Li',
+    venue: 'ICML 2026',
+    shortDescription: 'FourTune enables end-to-end fully 4-bit diffusion post-training, matching BF16 LoRA quality with 2.25× lower memory and 2.27× higher throughput.',
+    backTitle: 'Comming Soon',
+    links: {
+      paper: 'https://arxiv.org/abs/2607.05711',
+    },
+  },
+  {
     video: 'video/Stand-In.mp4',
     title: 'Stand-In: A Lightweight and Plug-and-Play Identity Control for Video Generation',
     authors: 'Bowen Xue*, Zheng-Peng Duan*, Qixin Yan, Wenjing Wang, Hao Liu, Chun-Le Guo, Chongyi Li, Chen Li, and Jing LYU',
@@ -142,6 +153,14 @@ const publications = [
           date: 'Jun 2026',
           content: (
             <>
+              🎉 <span className="font-medium">Ring Forcing was accepted by <span className="text-blue-500">ECCV 2026!</span> More details coming soon.</span>
+            </>
+          ),
+        },
+        {
+          date: 'Jun 2026',
+          content: (
+            <>
               🎓 <span className="font-medium">Started as a research intern in Prof. Jiajun Wu&apos;s group at <span className="text-blue-500">Stanford University</span>.</span>
             </>
           ),
@@ -150,7 +169,7 @@ const publications = [
           date: 'May 2026',
           content: (
             <>
-              🎉 <span className="font-medium">FourTune was accepted by <span className="text-blue-500">ICML 2026!</span> More details coming soon.</span>
+              🎉 <span className="font-medium">FourTune was accepted by <span className="text-blue-500">ICML 2026!</span></span>
             </>
           ),
         },

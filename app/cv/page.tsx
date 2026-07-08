@@ -53,19 +53,25 @@ export default function CVPage() {
               <span className="font-semibold text-gray-500">[2]</span>
               <div>
                 <p className="leading-relaxed">
-                  <strong>Bowen Xue</strong>*, Zihan Min*, Xingyang Li*, Muyang Li, Yujun Lin, Zhekai Zhang, Haocheng Xi, Lvmin Zhang, Maneesh Agrawala, Jun-Yan Zhu, and Song Han, <span className="italic">FourTune: Towards Fully 4-Bit Efficient Post-Training for Diffusion Models</span>.
+                  <strong>Bowen Xue</strong>*, Zihan Min*, Xingyang Li*, Zhekai Zhang, Haocheng Xi, Lvmin Zhang, Maneesh Agrawala, Jun-Yan Zhu, Song Han, Yujun Lin, and Muyang Li, <span className="italic">FourTune: Towards Fully 4-Bit Efficient Post-Training for Diffusion Models</span>.
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mt-2 text-sm">
                   <span className="font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-md">ICML 2026</span>
+                  <Link href="https://arxiv.org/abs/2607.05711" className="text-purple-600 hover:text-purple-700 underline" target="_blank">PDF</Link>
                 </div>
               </div>
             </li>
 
             <li className="flex gap-3">
               <span className="font-semibold text-gray-500">[3]</span>
-              <p className="leading-relaxed">
-                <strong>Bowen Xue</strong>, Brandon Y. Feng, Chenguo Lin, Yuchen Lin, Yujia Zeng, Lvmin Zhang, Honglei Yan, and Panwang Pan, <span className="italic">Ring Forcing: Towards Precise Long-Term Memory for Autoregressive Video Diffusion</span>.
-              </p>
+              <div>
+                <p className="leading-relaxed">
+                  <strong>Bowen Xue</strong>, Brandon Y. Feng, Chenguo Lin, Yuchen Lin, Yujia Zeng, Lvmin Zhang, Honglei Yan, and Panwang Pan, <span className="italic">Ring Forcing: Towards Precise Long-Term Memory for Autoregressive Video Diffusion</span>.
+                </p>
+                <div className="flex flex-wrap items-center gap-3 mt-2 text-sm">
+                  <span className="font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-md">ECCV 2026</span>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -76,16 +82,31 @@ export default function CVPage() {
         <h2 className="text-xl font-semibold mb-3">💼 Experience</h2>
         <div className="space-y-4">
 
+          {/* Stanford */}
+          <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md">
+            <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-1">
+              <p className="font-semibold text-lg text-slate-800">Stanford University</p>
+              <p className="text-sm text-gray-600">Jun. 2026 – Present</p>
+            </div>
+            <p className="text-sm text-gray-700 mb-2">Research intern, Prof. Jiajun Wu&apos;s group</p>
+            <ul className="list-disc pl-5 mt-2 text-gray-700 space-y-1">
+              <li>
+                Researching physically grounded controllable video generation with unified action representations.
+              </li>
+            </ul>
+            <p className="text-sm text-slate-500 mt-4">Video Generation, Physical Grounding</p>
+          </div>
+
           {/* ByteDance */}
           <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md">
             <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-1">
               <p className="font-semibold text-lg text-slate-800">ByteDance</p>
-              <p className="text-sm text-gray-600">Sep. 2025 – Present</p>
+              <p className="text-sm text-gray-600">Sep. 2025 – May 2026</p>
             </div>
             <p className="text-sm text-gray-700 mb-2">Research intern</p>
             <ul className="list-disc pl-5 mt-2 text-gray-700 space-y-1">
               <li>
-                Proposed <strong><span className="italic">Ring Forcing</span></strong> to address the challenge of constructing and utilizing memory in long video generation. Extended the effective history span by 30× under a fixed sequence length, achieving minute-level memory and effectively maintaining long-term consistency.
+                Proposed <strong><span className="italic">Ring Forcing</span></strong> (<span className="text-purple-700 font-bold">ECCV 2026</span>), a long-term-memory framework for autoregressive video diffusion that enables minute-scale generation with robust object permanence and precise retrieval of distant visual history.
               </li>
             </ul>
             <p className="text-sm text-slate-500 mt-4">Long Video Generation, AR Diffusion</p>
