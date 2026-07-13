@@ -106,7 +106,7 @@ export default function CVPage() {
             <p className="text-sm text-gray-700 mb-2">Research intern</p>
             <ul className="list-disc pl-5 mt-2 text-gray-700 space-y-1">
               <li>
-                Proposed <strong><span className="italic">Ring Forcing</span></strong> (<span className="text-purple-700 font-bold">ECCV 2026</span>), a long-term-memory framework for autoregressive video diffusion that enables minute-scale generation with robust object permanence and precise retrieval of distant visual history.
+                Proposed <strong><span className="italic">Ring Forcing</span></strong> (<span className="text-purple-700 font-bold">ECCV 2026</span>), a long-term-memory framework for autoregressive video diffusion that enables minute-scale generation with robust object permanence and precise retrieval of distant history.
               </li>
             </ul>
             <p className="text-sm text-slate-500 mt-4">Long Video Generation, AR Diffusion</p>
