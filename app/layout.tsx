@@ -3,16 +3,13 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import Header from './components/Header';
 import PageTransition from './components/PageTransition';
+import { siteUrl } from './site';
 
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
 });
-
-// The GitHub Pages custom domain — bowenxue2005.github.io 301s here, so
-// canonical/og:url must point at this host, not the redirecting one.
-const siteUrl = 'https://bowenxue.me';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
