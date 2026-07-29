@@ -10,7 +10,9 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const siteUrl = 'https://bowenxue2005.github.io';
+// The GitHub Pages custom domain — bowenxue2005.github.io 301s here, so
+// canonical/og:url must point at this host, not the redirecting one.
+const siteUrl = 'https://bowenxue.me';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
