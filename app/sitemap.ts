@@ -1,19 +1,20 @@
 import type { MetadataRoute } from 'next';
 import { siteUrl } from './site';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+// Required under `output: 'export'`, which the GitHub Pages workflow injects.
+export const dynamic = 'force-static';
 
+// No lastModified: the only value available at build time is the build clock,
+// which would change on every deploy even when the page content did not.
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: siteUrl,
-      lastModified,
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
       url: `${siteUrl}/cv`,
-      lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     },

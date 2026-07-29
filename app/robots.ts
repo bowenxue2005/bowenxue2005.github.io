@@ -1,6 +1,9 @@
 import type { MetadataRoute } from 'next';
 import { siteUrl } from './site';
 
+// Required under `output: 'export'`, which the GitHub Pages workflow injects.
+export const dynamic = 'force-static';
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
