@@ -1,10 +1,39 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import Image from 'next/image';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { FiGithub, FiFileText, FiHome, FiDownload } from 'react-icons/fi';
 
-function PublicationMedia({ publication }) {
+const SMALL_SCREEN_QUERY = '(max-width: 768px)';
+
+/**
+ * Returns null until mounted, then true/false. Both card layouts live in the
+ * DOM at once (CSS decides which one is visible), so this is used purely to
+ * pick which of the two should own the heavy <video> element.
+ */
+function useIsSmallScreen() {
+  const [isSmall, setIsSmall] = useState(null);
+
+  useEffect(() => {
+    const media = window.matchMedia(SMALL_SCREEN_QUERY);
+    const update = () => setIsSmall(media.matches);
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
+
+  return isSmall;
+}
+
+function PublicationMedia({ publication, variant }) {
+  const isSmall = useIsSmallScreen();
+
   if (publication.video) {
+    // Mounting the video in both layouts would fetch and decode the same file
+    // twice, so only the currently visible layout renders it.
+    const owns = isSmall === null ? false : isSmall === (variant === 'mobile');
+    if (!owns) return <div className="w-full h-full bg-slate-100" />;
+
     return (
       <video
         src={publication.video}
@@ -20,11 +49,14 @@ function PublicationMedia({ publication }) {
   }
 
   if (publication.image) {
+    // Static import, so next/image reads the intrinsic size from the file and
+    // reserves the right box up front — no layout shift, no hardcoded numbers.
     return (
       <div className="w-full h-full bg-white p-3">
-        <img
+        <Image
           src={publication.image}
           alt={publication.title}
+          sizes="(max-width: 768px) 100vw, 45vw"
           className="w-full h-full object-contain"
         />
       </div>
@@ -66,24 +98,6 @@ function PublicationLinks({ links = {}, mobile = false }) {
   );
 }
 
-const useMediaQuery = (query) => {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const media = window.matchMedia(query);
-      if (media.matches !== matches) {
-        setMatches(media.matches);
-      }
-      const listener = () => setMatches(media.matches);
-      window.addEventListener('resize', listener);
-      return () => window.removeEventListener('resize', listener);
-    }
-  }, [matches, query]);
-
-  return matches;
-};
-
 
 function MobileCard({ publication }) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -107,9 +121,9 @@ function MobileCard({ publication }) {
         <div style={{ backfaceVisibility: 'hidden' }} className="w-full h-full">
           <div className="flex flex-col gap-4 p-4 rounded-2xl bg-white/80 border border-slate-200 backdrop-blur-md shadow-lg">
             <div className="w-full aspect-video rounded-lg overflow-hidden shadow-md">
-              <PublicationMedia publication={publication} />
+              <PublicationMedia publication={publication} variant="mobile" />
             </div>
-            
+
             <div className="flex flex-col">
               <h3 className="text-lg font-bold text-slate-800">{publication.title}</h3>
               <p className="text-sm text-slate-500 mt-1">{publication.authors}</p>
@@ -193,7 +207,7 @@ function DesktopCard({ publication }) {
           rotateX: isFlipped ? 0 : rotateX,
           rotateY: isFlipped ? 0 : rotateY,
         }}
-        className="relative w-full aspect-[900/334] max-w-4xl mx-auto rounded-2xl transition-shadow duration-300"
+        className="relative w-full aspect-[900/334] max-w-4xl mx-auto rounded-2xl"
       >
         <motion.div
           className="relative w-full h-full"
@@ -202,10 +216,10 @@ function DesktopCard({ publication }) {
           transition={{ duration: 0.6, ease: 'easeInOut' }}
         >
           <div style={{ backfaceVisibility: 'hidden' }} className="absolute w-full h-full">
-            <div className="w-full h-full p-4 md:px-5 grid grid-cols-2 gap-4 md:gap-6 items-center rounded-2xl bg-white/80 border border-slate-200 backdrop-blur-md hover:shadow-2xl hover:shadow-purple-500/20">
+            <div className="w-full h-full p-4 md:px-5 grid grid-cols-2 gap-4 md:gap-6 items-center rounded-2xl bg-white/80 border border-slate-200 backdrop-blur-md transition-shadow duration-300 hover:shadow-2xl hover:shadow-purple-500/20">
               <div style={{ transform: 'translateZ(60px)', transformStyle: 'preserve-3d' }}>
                 <div className="w-full h-[85%] rounded-lg overflow-hidden shadow-lg" style={{ transform: 'translateZ(25px)' }}>
-                  <PublicationMedia publication={publication} />
+                  <PublicationMedia publication={publication} variant="desktop" />
                 </div>
               </div>
               <div style={{ transform: 'translateZ(35px) translateY(-3px)' }} className="flex flex-col justify-center h-full">
@@ -213,7 +227,7 @@ function DesktopCard({ publication }) {
                   <h3 className="text-xs sm:text-base md:text-[19px] font-bold text-slate-800">{publication.title}</h3>
                   <p className="text-xs md:text-sm text-slate-500 mt-1">{publication.authors}</p>
                 </div>
-                
+
                 <p
                   className="text-xs md:text-sm text-slate-600 my-2 md:my-3"
                   style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis', lineHeight: '1.42rem', maxHeight: '4.26rem' }}
@@ -249,11 +263,20 @@ function DesktopCard({ publication }) {
 
 
 
+/**
+ * Both layouts are rendered and switched with CSS rather than a JS media
+ * query, so the server-rendered markup already matches the viewport and
+ * phones no longer flash the desktop layout before hydration.
+ */
 export default function InteractiveCard({ publication }) {
-  const isMobile = useMediaQuery('(max-width: 768px)');
-  return isMobile ? (
-    <MobileCard publication={publication} />
-  ) : (
-    <DesktopCard publication={publication} />
+  return (
+    <>
+      <div className="md:hidden">
+        <MobileCard publication={publication} />
+      </div>
+      <div className="hidden md:block">
+        <DesktopCard publication={publication} />
+      </div>
+    </>
   );
 }

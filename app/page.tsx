@@ -1,20 +1,87 @@
 'use client';
 
 import Image from 'next/image';
+import fourTuneFigure from '@/public/figure/FourTune.png';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaGithub } from 'react-icons/fa';
 import { SiGooglescholar } from 'react-icons/si';
 import SpotlightCard from './components/SpotlightCard';
 
+const news = [
+  {
+    date: 'Jun 2026',
+    dateTime: '2026-06',
+    content: (
+      <>
+        🎉 <span className="font-medium">Ring Forcing was accepted by <span className="text-blue-500">ECCV 2026!</span> More details coming soon.</span>
+      </>
+    ),
+  },
+  {
+    date: 'Jun 2026',
+    dateTime: '2026-06',
+    content: (
+      <>
+        🎓 <span className="font-medium">Started as a research intern in Prof. Jiajun Wu&apos;s group at <span className="text-blue-500">Stanford University</span>.</span>
+      </>
+    ),
+  },
+  {
+    date: 'May 2026',
+    dateTime: '2026-05',
+    content: (
+      <>
+        🎉 <span className="font-medium">FourTune was accepted by <span className="text-blue-500">ICML 2026!</span></span>
+      </>
+    ),
+  },
+  {
+    date: 'Feb 2026',
+    dateTime: '2026-02',
+    content: (
+      <>
+        🎉 <span className="font-medium">Stand-In was accepted by <span className="text-blue-500">CVPR 2026!</span> See you in Denver!</span>
+      </>
+    ),
+  },
+  {
+    date: 'Sep 2025',
+    dateTime: '2025-09',
+    content: (
+      <>
+        💼 <span className="font-medium">Joined <span className="text-blue-500">ByteDance</span> as a research intern.</span>
+      </>
+    ),
+  },
+  {
+    date: 'Apr 2025',
+    dateTime: '2025-04',
+    content: (
+      <>
+        🎓 <span className="font-medium">Started a new research journey as an intern at <a href="https://hanlab.mit.edu" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline hover:text-purple-700">MIT HAN Lab</a>!</span>
+      </>
+    ),
+  },
+  {
+    date: 'Nov 2024',
+    dateTime: '2024-11',
+    content: (
+      <>
+        💼 <span className="font-medium">Worked as a research intern at <span className="text-blue-500">Tencent</span>.</span>
+      </>
+    ),
+  },
+];
+
 export default function HomePage() {
 const publications = [
   {
-    image: '/figure/FourTune.png',
+    image: fourTuneFigure,
     title: 'FourTune: Towards Fully 4-Bit Efficient Post-Training for Diffusion Models',
     authors: 'Bowen Xue*, Zihan Min*, Xingyang Li*, Zhekai Zhang, Haocheng Xi, Lvmin Zhang, Maneesh Agrawala, Jun-Yan Zhu, Song Han, Yujun Lin, and Muyang Li',
     venue: 'ICML 2026',
     shortDescription: 'FourTune enables end-to-end fully 4-bit diffusion post-training, matching BF16 LoRA quality with 2.25× lower memory and 2.27× higher throughput.',
-    backTitle: 'Comming Soon',
+    backTitle: 'Coming Soon',
     links: {
       paper: 'https://arxiv.org/abs/2607.05711',
     },
@@ -144,73 +211,17 @@ const publications = [
   </h2>
 
   <div className="relative pl-5 sm:pl-6">
-    {/* 主时间线 */}
-    <div className="absolute top-0 left-1.5 w-0.5 h-full bg-purple-400" />
-
-    <ul className="space-y-5 sm:space-y-6"> {/* 间距从 12 缩小到 6 */}
-      {[
-        {
-          date: 'Jun 2026',
-          content: (
-            <>
-              🎉 <span className="font-medium">Ring Forcing was accepted by <span className="text-blue-500">ECCV 2026!</span> More details coming soon.</span>
-            </>
-          ),
-        },
-        {
-          date: 'Jun 2026',
-          content: (
-            <>
-              🎓 <span className="font-medium">Started as a research intern in Prof. Jiajun Wu&apos;s group at <span className="text-blue-500">Stanford University</span>.</span>
-            </>
-          ),
-        },
-        {
-          date: 'May 2026',
-          content: (
-            <>
-              🎉 <span className="font-medium">FourTune was accepted by <span className="text-blue-500">ICML 2026!</span></span>
-            </>
-          ),
-        },
-        {
-          date: 'Feb 2026',
-          content: (
-            <>
-              🎉 <span className="font-medium">Stand-In was accepted by <span className="text-blue-500">CVPR 2026!</span> See you in Denver!</span>
-            </>
-          ),
-        },
-        {
-          date: 'Sep 2025',
-          content: (
-            <>
-              💼 <span className="font-medium">Joined <span className="text-blue-500">ByteDance</span> as a research intern.</span>
-            </>
-          ),
-        },
-        {
-          date: 'Apr 2025',
-          content: (
-            <>
-              🎓 <span className="font-medium">Started a new research journey as an intern at <a href="https://hanlab.mit.edu" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline hover:text-purple-700">MIT HAN Lab</a>!</span>
-            </>
-          ),
-        },
-        {
-          date: 'Nov 2024',
-          content: (
-            <>
-              💼 <span className="font-medium">Worked as a research intern at <span className="text-blue-500">Tencent</span>.</span>
-            </>
-          ),
-        },
-      ].map((item, index) => (
-    <li key={index} className="relative flex items-start gap-3 sm:gap-4">
+    <ul>
+      {news.map((item, index) => (
+    <li key={index} className="relative flex items-start gap-3 sm:gap-4 pb-5 last:pb-0 sm:pb-6">
+      {/* 连接线：从本条圆点中心画到下一条圆点中心，最后一条不画 */}
+      {index < news.length - 1 && (
+        <span aria-hidden="true" className="absolute left-1 top-[11px] h-full w-0.5 bg-purple-400" />
+      )}
       <div className="w-2.5 h-2.5 bg-purple-500 rounded-full z-10 shrink-0 mt-1.5" />
 
       <div className="flex flex-col sm:flex-row sm:gap-4 w-full">
-        <time className="text-sm sm:text-base font-semibold text-gray-400 sm:w-20 shrink-0 tabular-nums">
+        <time dateTime={item.dateTime} className="text-sm sm:text-base font-semibold text-gray-400 sm:w-20 shrink-0 tabular-nums">
           {item.date}
         </time>
         <div className="text-[15px] sm:text-base text-gray-800 leading-relaxed">
