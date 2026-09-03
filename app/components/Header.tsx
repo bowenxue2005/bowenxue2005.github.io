@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
+import { FiMenu } from 'react-icons/fi';
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -67,7 +68,7 @@ export default function Header() {
           aria-expanded={menuOpen}
           aria-controls="mobile-nav"
         >
-          ☰
+          <FiMenu aria-hidden="true" />
         </button>
 
         <nav className="hidden md:flex space-x-6 text-gray-700 font-medium">

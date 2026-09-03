@@ -12,63 +12,49 @@ const news = [
     date: 'Jun 2026',
     dateTime: '2026-06',
     content: (
-      <>
-        🎉 <span className="font-medium">Ring Forcing was accepted by <span className="text-blue-500">ECCV 2026!</span> More details coming soon.</span>
-      </>
+      <span className="font-medium">Ring Forcing was accepted by <span className="text-blue-500">ECCV 2026!</span> More details coming soon.</span>
     ),
   },
   {
     date: 'Jun 2026',
     dateTime: '2026-06',
     content: (
-      <>
-        🎓 <span className="font-medium">Started as a research intern in Prof. Jiajun Wu&apos;s group at <span className="text-blue-500">Stanford University</span>.</span>
-      </>
+      <span className="font-medium">Started as a research intern in Prof. Jiajun Wu&apos;s group at <span className="text-blue-500">Stanford University</span>.</span>
     ),
   },
   {
     date: 'May 2026',
     dateTime: '2026-05',
     content: (
-      <>
-        🎉 <span className="font-medium">FourTune was accepted by <span className="text-blue-500">ICML 2026!</span></span>
-      </>
+      <span className="font-medium">FourTune was accepted by <span className="text-blue-500">ICML 2026!</span></span>
     ),
   },
   {
     date: 'Feb 2026',
     dateTime: '2026-02',
     content: (
-      <>
-        🎉 <span className="font-medium">Stand-In was accepted by <span className="text-blue-500">CVPR 2026!</span> See you in Denver!</span>
-      </>
+      <span className="font-medium">Stand-In was accepted by <span className="text-blue-500">CVPR 2026!</span> See you in Denver!</span>
     ),
   },
   {
     date: 'Sep 2025',
     dateTime: '2025-09',
     content: (
-      <>
-        💼 <span className="font-medium">Joined <span className="text-blue-500">ByteDance</span> as a research intern.</span>
-      </>
+      <span className="font-medium">Joined <span className="text-blue-500">ByteDance</span> as a research intern.</span>
     ),
   },
   {
     date: 'Apr 2025',
     dateTime: '2025-04',
     content: (
-      <>
-        🎓 <span className="font-medium">Started a new research journey as an intern at <a href="https://hanlab.mit.edu" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline hover:text-purple-700">MIT HAN Lab</a>!</span>
-      </>
+      <span className="font-medium">Started a new research journey as an intern at <a href="https://hanlab.mit.edu" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline hover:text-purple-700">MIT HAN Lab</a>!</span>
     ),
   },
   {
     date: 'Nov 2024',
     dateTime: '2024-11',
     content: (
-      <>
-        💼 <span className="font-medium">Worked as a research intern at <span className="text-blue-500">Tencent</span>.</span>
-      </>
+      <span className="font-medium">Worked as a research intern at <span className="text-blue-500">Tencent</span>.</span>
     ),
   },
 ];
@@ -81,7 +67,6 @@ const publications = [
     authors: 'Bowen Xue*, Zihan Min*, Xingyang Li*, Zhekai Zhang, Haocheng Xi, Lvmin Zhang, Maneesh Agrawala, Jun-Yan Zhu, Song Han, Yujun Lin, and Muyang Li',
     venue: 'ICML 2026',
     shortDescription: 'FourTune enables end-to-end fully 4-bit diffusion post-training, matching BF16 LoRA quality with 2.25× lower memory and 2.27× higher throughput.',
-    backTitle: 'Coming Soon',
     links: {
       paper: 'https://arxiv.org/abs/2607.05711',
     },
@@ -92,7 +77,6 @@ const publications = [
     authors: 'Bowen Xue*, Zheng-Peng Duan*, Qixin Yan, Wenjing Wang, Hao Liu, Chun-Le Guo, Chongyi Li, Chen Li, and Jing LYU',
     venue: 'CVPR 2026',
     shortDescription: 'Stand-In trains just 1% of the original model’s parameters with 2,000 video–prompt pairs, yet achieves high-quality identity-preserving video generation.',
-    description: 'This was my first complete research project. Ten days after releasing it on GitHub, Stand-In gained over 500 stars, and my work was accepted by the community. During that period, I almost refreshed the star count every day whenever I had free time, actively responded to issues, and improved the project as planned. Later, when the tide receded, everything almost returned to normal—except that I kept working hard: maintaining the project and preparing for the next, more solid one.',
     links: {
       project: 'https://www.stand-in.tech/', 
       paper: 'https://arxiv.org/abs/2508.07901',
@@ -178,7 +162,7 @@ const publications = [
           viewport={{ once: true }}
           className="bg-white p-4 sm:p-5 rounded-xl shadow-md"
         >
-          <h2 className="text-lg sm:text-xl font-semibold mb-2">🎯 Research Interests</h2>
+          <h2 className="text-lg sm:text-xl font-semibold mb-2">Research Interests</h2>
           <p className="text-[15px] leading-relaxed sm:text-base sm:leading-normal">Visual Generation: Image Generation, Video Generation, World Models, Efficient Visual Generation.</p>
           </motion.div>
 
@@ -189,7 +173,7 @@ const publications = [
           viewport={{ once: true }}
           className="bg-white p-4 sm:p-5 rounded-xl shadow-md"
         >
-          <h2 className="text-lg sm:text-xl font-semibold mb-2">🔍 Goal</h2>
+          <h2 className="text-lg sm:text-xl font-semibold mb-2">Goal</h2>
           <p className="text-pretty text-[15px] leading-relaxed sm:text-base sm:leading-normal">
             Making visual generation controllable as well as impressive. I study how to
             translate human intent into visual content faithfully, efficiently, and at scale.
@@ -207,7 +191,7 @@ const publications = [
       >
 <section className="mt-10 sm:mt-12">
   <h2 className="text-xl font-bold flex items-center gap-2 mb-6">
-    📰 News
+    News
   </h2>
 
   <div className="relative pl-5 sm:pl-6">
@@ -236,7 +220,7 @@ const publications = [
       </motion.div>
 
 <section className="mt-10 sm:mt-12">
-  <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">📝 Publications</h2>
+  <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Publications</h2>
   <div className="space-y-8">
     {publications.map((pub, index) => (
       <SpotlightCard key={index} publication={pub} />

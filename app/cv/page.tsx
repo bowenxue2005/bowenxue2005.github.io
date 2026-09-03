@@ -12,11 +12,11 @@ export default function CVPage() {
       transition={{ duration: 0.5 }}
       className="pt-24 px-4 py-12 min-h-screen max-w-4xl mx-auto text-gray-800"
     >
-      <h1 className="text-3xl font-bold mb-8">📄 Curriculum Vitae</h1>
+      <h1 className="text-3xl font-bold mb-8">Curriculum Vitae</h1>
 
       {/* Education */}
       <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-3">🎓 Education</h2>
+        <h2 className="text-xl font-semibold mb-3">Education</h2>
         <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md">
           <div className="flex flex-col sm:flex-row justify-between sm:items-start">
             <p className="font-semibold text-lg">University of Science and Technology of China (USTC)</p>
@@ -31,7 +31,7 @@ export default function CVPage() {
 
       {/* Publications */}
       <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-3">📚 Publications</h2>
+        <h2 className="text-xl font-semibold mb-3">Publications</h2>
         <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md">
           <ul className="space-y-5 text-gray-800">
             <li className="flex gap-3">
@@ -79,7 +79,7 @@ export default function CVPage() {
 
       {/* Experience */}
       <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-3">💼 Experience</h2>
+        <h2 className="text-xl font-semibold mb-3">Experience</h2>
         <div className="space-y-4">
 
           {/* Stanford */}
@@ -154,7 +154,7 @@ export default function CVPage() {
 
       {/* Others */}
       <section>
-        <h2 className="text-xl font-semibold mb-3">ℹ️ Others</h2>
+        <h2 className="text-xl font-semibold mb-3">Others</h2>
         <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md text-gray-700">
           <ul className="list-disc pl-5 space-y-2">
             {/* <li><strong>GPA:</strong> 3.72 (Top 15%)</li> */}
