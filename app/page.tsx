@@ -153,34 +153,6 @@ const publications = [
             </div>
       </motion.div>
 
-      {/* 研究兴趣 & 目标 */}
-      <div className="grid grid-cols-1 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-5 sm:gap-6 mt-10 sm:mt-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="bg-white p-4 sm:p-5 rounded-xl shadow-md"
-        >
-          <h2 className="text-lg sm:text-xl font-semibold mb-2">Research Interests</h2>
-          <p className="text-[15px] leading-relaxed sm:text-base sm:leading-normal">Visual Generation: Image Generation, Video Generation, World Models, Efficient Visual Generation.</p>
-          </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="bg-white p-4 sm:p-5 rounded-xl shadow-md"
-        >
-          <h2 className="text-lg sm:text-xl font-semibold mb-2">Goal</h2>
-          <p className="text-pretty text-[15px] leading-relaxed sm:text-base sm:leading-normal">
-            Making visual generation controllable as well as impressive. I study how to
-            translate human intent into visual content faithfully, efficiently, and at scale.
-          </p>
-        </motion.div>
-      </div>
-
       {/* 时间线 */}
       <motion.div
         initial={{ opacity: 0 }}
