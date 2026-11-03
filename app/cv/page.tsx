@@ -14,11 +14,11 @@ const NB = '‑';
 
 type Contribution = { name: string; href?: string; venue?: string; note: string };
 
-const experience: { org: string; when: string; role: string; work: Contribution[] }[] = [
+const experience: { org: string; when: string; role: React.ReactNode; work: Contribution[] }[] = [
   {
     org: 'Stanford University',
     when: 'Jun 2026 – present',
-    role: 'Research intern with Prof. Jiajun Wu',
+    role: <>Research intern with <a className="person" href="https://jiajunwu.com/" target="_blank" rel="noopener noreferrer">Prof. Jiajun Wu</a></>,
     work: [{ name: 'UniAction', href: '#pub-uniaction', note: `Unified action conditioning for world models. One jointly trained model outperforms per${NB}action experts across force, camera, hand pose and robot pose.` }],
   },
   {

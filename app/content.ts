@@ -1,6 +1,35 @@
 // Everything the homepage and the CV say about the work, in one place so the
 // two pages can never drift apart.
 
+/**
+ * Co-authors' homepages, taken from each paper's own project page or, where it
+ * links none, from a page whose title confirms the person. Anyone without a
+ * page that could be confirmed is simply left as text.
+ */
+export const people: Record<string, string> = {
+  'Zizhang Li': 'https://kyleleey.github.io/',
+  'Hong-Xing Yu': 'https://kovenyu.com/',
+  'Jiajun Wu': 'https://jiajunwu.com/',
+  'Brandon Y. Feng': 'https://brandonyfeng.github.io/',
+  'Chenguo Lin': 'https://chenguolin.github.io/',
+  'Yuchen Lin': 'https://wgsxm.github.io/',
+  'Yujia Zeng': 'https://www.yujiazeng.com/',
+  'Lvmin Zhang': 'https://lvminzhang.com/',
+  'Maneesh Agrawala': 'https://graphics.stanford.edu/~maneesh/',
+  'Honglei Yan': 'https://dblp.org/pid/282/9638.html',
+  'Panwang Pan': 'https://paulpanwang.github.io/',
+  'Xingyang Li': 'https://hanlab.mit.edu/team/xingyang-li',
+  'Zhekai Zhang': 'https://hanlab.mit.edu/team/zhekai-zhang',
+  'Haocheng Xi': 'https://hanlab.mit.edu/team/haocheng-xi',
+  'Jun-Yan Zhu': 'https://www.cs.cmu.edu/~junyanz/',
+  'Song Han': 'https://hanlab.mit.edu/songhan',
+  'Yujun Lin': 'https://hanlab.mit.edu/team/yujun-lin',
+  'Muyang Li': 'https://hanlab.mit.edu/team/muyang-li',
+  'Zheng-Peng Duan': 'https://adam-duan.github.io/',
+  'Chun-Le Guo': 'https://mmcheng.net/clguo/',
+  'Chongyi Li': 'https://li-chongyi.github.io/',
+};
+
 export type Media =
   | { kind: 'video'; src: string; poster: string; width: number; height: number }
   | { kind: 'figure'; src: string; alt: string; width: number; height: number; fit?: 'figure' | 'photo' };

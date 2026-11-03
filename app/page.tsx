@@ -9,7 +9,7 @@ const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
 const news = [
   { date: 'Oct 2026', dateTime: '2026-10', content: <>Released <a href="https://github.com/FlashML-org/FreeVideo" {...external}>FreeVideo</a>, an open‑source inference engine for MiniMax H3 on consumer GPUs.</> },
   { date: 'Jun 2026', dateTime: '2026-06', content: <>Ring Forcing was accepted to <span className="hl">ECCV 2026</span>.</> },
-  { date: 'Jun 2026', dateTime: '2026-06', content: <>Joined Prof. Jiajun Wu’s group at <span className="hl">Stanford University</span> as a research intern.</> },
+  { date: 'Jun 2026', dateTime: '2026-06', content: <>Joined <a className="person" href="https://jiajunwu.com/" {...external}>Prof. Jiajun Wu</a>’s group at <span className="hl">Stanford University</span> as a research intern.</> },
   { date: 'May 2026', dateTime: '2026-05', content: <>FourTune was accepted to <span className="hl">ICML 2026</span>.</> },
   { date: 'Feb 2026', dateTime: '2026-02', content: <>Stand-In was accepted to <span className="hl">CVPR 2026</span>.</> },
   { date: 'Sep 2025', dateTime: '2025-09', content: <>Joined <span className="hl">ByteDance</span> as a research intern.</> },

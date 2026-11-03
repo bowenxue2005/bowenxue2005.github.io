@@ -1,4 +1,4 @@
-import type { Work } from '../content';
+import { people, type Work } from '../content';
 import { repoFromUrl } from '../github';
 import { StarBadge, StarCount } from './Stars';
 import Thumb from './Thumb';
@@ -11,8 +11,9 @@ export function keepTail(text: string): string {
 }
 
 /**
- * An author list or a project role, with his own name picked out. Each name is
- * kept on one line, so a list never breaks between a given and a family name.
+ * An author list or a project role, with his own name picked out and each
+ * co-author linked to their homepage. Each name is kept on one line, so a list
+ * never breaks between a given and a family name.
  */
 export function Credit({ text }: { text: string }) {
   const names = text.split(/(,\s+(?:and\s+)?|\s+and\s+)/);
@@ -20,11 +21,16 @@ export function Credit({ text }: { text: string }) {
     <>
       {names.map((part, index) => {
         if (index % 2 === 1) return part;
-        const own = part.startsWith('Bowen Xue');
-        const rest = own ? part.slice('Bowen Xue'.length) : part;
+        if (part.startsWith('Bowen Xue')) {
+          return <span className="nowrap" key={index}><strong>Bowen Xue</strong>{part.slice('Bowen Xue'.length)}</span>;
+        }
+        // An equal-contribution mark stays outside the link.
+        const name = part.replace(/\*$/, '');
+        const href = people[name];
         return (
           <span className="nowrap" key={index}>
-            {own ? <><strong>Bowen Xue</strong>{rest}</> : part}
+            {href ? <a className="person" href={href} target="_blank" rel="noopener noreferrer">{name}</a> : name}
+            {part.slice(name.length)}
           </span>
         );
       })}

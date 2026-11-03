@@ -61,6 +61,8 @@ a:hover { color: var(--blue-hover); text-decoration: underline; text-decoration-
 :where(a, summary):focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; border-radius: 4px; }
 
 .nowrap { white-space: nowrap; }
+/* People's names link to their homepages but read as plain text. */
+a.person, a.person:hover { color: inherit; }
 
 .page { width: min(var(--page), 100% - var(--gutter) * 2); margin-inline: auto; padding-bottom: 96px; }
 
