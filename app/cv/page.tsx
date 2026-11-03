@@ -1,167 +1,159 @@
-'use client';
+import type { Metadata } from 'next';
+import ProfileLinks from '../components/ProfileLinks';
+import { Credit, keepTail } from '../components/WorkEntry';
+import { StarCount } from '../components/Stars';
+import { papers, projects, type Work } from '../content';
+import { repoFromUrl } from '../github';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+export const metadata: Metadata = {
+  title: 'CV',
+  alternates: { canonical: '/cv' },
+};
+
+const NB = '‑';
+
+type Contribution = { name: string; href?: string; venue?: string; note: string };
+
+const experience: { org: string; when: string; role: string; work: Contribution[] }[] = [
+  {
+    org: 'Stanford University',
+    when: 'Jun 2026 – present',
+    role: 'Research intern with Prof. Jiajun Wu',
+    work: [{ name: 'UniAction', href: '#pub-uniaction', note: `Unified action conditioning for world models. One jointly trained model outperforms per${NB}action experts across force, camera, hand pose and robot pose.` }],
+  },
+  {
+    org: 'ByteDance',
+    when: 'Sep 2025 – May 2026',
+    role: 'Research intern',
+    work: [{ name: 'Ring Forcing', href: '#pub-ring-forcing', venue: 'ECCV 2026', note: `Long${NB}term memory for autoregressive video diffusion, preserving object identity across minute${NB}long gaps.` }],
+  },
+  {
+    org: 'MIT HAN Lab',
+    when: 'Apr 2025 – Feb 2026',
+    role: 'Research intern, remote',
+    work: [
+      { name: 'FourTune', href: '#pub-fourtune', venue: 'ICML 2026', note: `Fully 4${NB}bit post${NB}training for diffusion models, with 2.25× less memory and 2.27× the throughput of BF16 LoRA.` },
+      { name: 'nunchaku', href: '#project-nunchaku', note: `PuLID identity customization for the 4${NB}bit inference engine and its ComfyUI plugin.` },
+    ],
+  },
+  {
+    org: 'Tencent',
+    when: 'Nov 2024 – Sep 2025',
+    role: 'Research intern',
+    work: [
+      { name: 'Stand-In', href: '#pub-stand-in', venue: 'CVPR 2026', note: `Identity${NB}preserving video generation with about 1% added parameters.` },
+      { name: `Identity${NB}preserving image generation`, note: `Deployed in WeChat Channels, 4× faster than IP${NB}Adapter and InstantID.` },
+    ],
+  },
+];
+
+const projectDates: Record<string, string> = { freevideo: 'Oct 2026 – present', nunchaku: 'Apr – Jun 2025' };
+
+/** Links as text, the way a CV reads; a repository carries its star count. */
+function TextLinks({ links }: { links: Work['links'] }) {
+  const items = [
+    { label: 'Project', href: links.project },
+    { label: 'Paper', href: links.paper },
+    { label: 'Code', href: links.code },
+    { label: 'Models', href: links.models },
+    ...(links.more ?? []),
+  ].filter((item): item is { label: string; href: string } => Boolean(item.href));
+  return (
+    <p className="cv-links">
+      {items.map(({ label, href }) => {
+        const repo = repoFromUrl(href);
+        return (
+          <span key={label}>
+            <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+            {repo && <StarCount repo={repo} />}
+          </span>
+        );
+      })}
+    </p>
+  );
+}
+
+function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+  return (
+    <section className="section" aria-labelledby={id}>
+      <h2 id={id} className="section-title">{title}</h2>
+      <div className="cv-rows">{children}</div>
+    </section>
+  );
+}
 
 export default function CVPage() {
   return (
-    <motion.main
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -30 }}
-      transition={{ duration: 0.5 }}
-      className="pt-24 px-4 py-12 min-h-screen max-w-4xl mx-auto text-gray-800"
-    >
-      <h1 className="text-3xl font-bold mb-8">Curriculum Vitae</h1>
-
-      {/* Education */}
-      <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-3">Education</h2>
-        <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md">
-          <div className="flex flex-col sm:flex-row justify-between sm:items-start">
-            <p className="font-semibold text-lg">University of Science and Technology of China (USTC)</p>
-            <p className="text-sm text-gray-600">Sep. 2023 – Present</p>
-          </div>
-          <p className="mt-2 text-gray-800">
-            <span className="italic">B.Eng. Candidate</span> in Computer Science and Technology
-          </p>
-          <p className="text-sm text-gray-600 mt-1">Expected Graduation: June 2027</p>
+    <main id="main-content" className="page">
+      <header className="cv-head">
+        <h1>Bowen Xue<span lang="zh">薛博文</span></h1>
+        <p className="cv-field">Undergraduate in Computer Science, USTC · Research intern, Stanford University</p>
+        <div className="cv-contact">
+          <a href="mailto:bowenxue2005@gmail.com">bowenxue2005@gmail.com</a>
+          <a href="https://bowenxue.me">bowenxue.me</a>
+          <ProfileLinks />
         </div>
-      </section>
+      </header>
 
-      {/* Publications */}
-      <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-3">Publications</h2>
-        <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md">
-          <ul className="space-y-5 text-gray-800">
-            <li className="flex gap-3">
-              <span className="font-semibold text-gray-500">[1]</span>
-              <div>
-                <p className="leading-relaxed">
-                  <strong>Bowen Xue</strong>*, Zheng-Peng Duan*, Qixin Yan, Wenjing Wang, Hao Liu, Chun-Le Guo, Chongyi Li, Chen Li, and Jing LYU, <span className="italic">Stand-In: A Lightweight and Plug-and-Play Identity Control for Video Generation</span>.
-                </p>
-                <div className="flex flex-wrap items-center gap-3 mt-2 text-sm">
-                  <span className="font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-md">CVPR 2026</span>
-                  <Link href="https://arxiv.org/abs/2508.07901" className="text-purple-600 hover:text-purple-700 underline" target="_blank">PDF</Link>
-                  <Link href="https://github.com/WeChatCV/Stand-In" className="text-purple-600 hover:text-purple-700 underline" target="_blank">GitHub (700+ Stars)</Link>
-                  <Link href="https://www.stand-in.tech/" className="text-purple-600 hover:text-purple-700 underline" target="_blank">Project Page</Link>
-                </div>
-              </div>
-            </li>
-            
-            <li className="flex gap-3">
-              <span className="font-semibold text-gray-500">[2]</span>
-              <div>
-                <p className="leading-relaxed">
-                  <strong>Bowen Xue</strong>*, Zihan Min*, Xingyang Li*, Zhekai Zhang, Haocheng Xi, Lvmin Zhang, Maneesh Agrawala, Jun-Yan Zhu, Song Han, Yujun Lin, and Muyang Li, <span className="italic">FourTune: Towards Fully 4-Bit Efficient Post-Training for Diffusion Models</span>.
-                </p>
-                <div className="flex flex-wrap items-center gap-3 mt-2 text-sm">
-                  <span className="font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-md">ICML 2026</span>
-                  <Link href="https://arxiv.org/abs/2607.05711" className="text-purple-600 hover:text-purple-700 underline" target="_blank">PDF</Link>
-                </div>
-              </div>
-            </li>
-
-            <li className="flex gap-3">
-              <span className="font-semibold text-gray-500">[3]</span>
-              <div>
-                <p className="leading-relaxed">
-                  <strong>Bowen Xue</strong>, Brandon Y. Feng, Chenguo Lin, Yuchen Lin, Yujia Zeng, Lvmin Zhang, Honglei Yan, and Panwang Pan, <span className="italic">Ring Forcing: Towards Precise Long-Term Memory for Autoregressive Video Diffusion</span>.
-                </p>
-                <div className="flex flex-wrap items-center gap-3 mt-2 text-sm">
-                  <span className="font-bold text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-md">ECCV 2026</span>
-                </div>
-              </div>
-            </li>
-          </ul>
+      <Section id="education" title="Education">
+        <div className="cv-row">
+          <time className="cv-when">2023 – 2027</time>
+          <div>
+            <h3 className="cv-title">University of Science and Technology of&nbsp;China</h3>
+            <p className="cv-sub">B.Eng. in Computer Science and Technology, expected June 2027</p>
+          </div>
         </div>
-      </section>
+      </Section>
 
-      {/* Experience */}
-      <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-3">Experience</h2>
-        <div className="space-y-4">
-
-          {/* Stanford */}
-          <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md">
-            <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-1">
-              <p className="font-semibold text-lg text-slate-800">Stanford University</p>
-              <p className="text-sm text-gray-600">Jun. 2026 – Present</p>
+      <Section id="publications" title="Publications">
+        {papers.map((paper) => (
+          <article className="cv-row" id={`pub-${paper.id}`} key={paper.id}>
+            <span className="cv-when">{paper.venue ? <span className="venue">{paper.venue}</span> : paper.date}</span>
+            <div>
+              <h3 className="cv-title">{paper.title}: {keepTail(paper.subtitle)}</h3>
+              <p className="cv-sub"><Credit text={paper.credit} /></p>
+              <TextLinks links={paper.links} />
             </div>
-            <p className="text-sm text-gray-700 mb-2">Research intern, Prof. Jiajun Wu&apos;s group</p>
-            <ul className="list-disc pl-5 mt-2 text-gray-700 space-y-1">
-              <li>
-                Researching physically grounded controllable video generation with unified action representations.
-              </li>
-            </ul>
-            <p className="text-sm text-slate-500 mt-4">Video Generation, Physical Grounding</p>
-          </div>
+          </article>
+        ))}
+      </Section>
 
-          {/* ByteDance */}
-          <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md">
-            <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-1">
-              <p className="font-semibold text-lg text-slate-800">ByteDance</p>
-              <p className="text-sm text-gray-600">Sep. 2025 – May 2026</p>
+      <Section id="experience" title="Research Experience">
+        {experience.map((item) => (
+          <article className="cv-row" key={item.org}>
+            <time className="cv-when">{item.when}</time>
+            <div>
+              <h3 className="cv-title">{item.org}</h3>
+              <p className="cv-sub">{item.role}</p>
+              <ul className="cv-bullets">
+                {item.work.map((work) => (
+                  <li key={work.name}>
+                    <p className="cv-work">
+                      {work.href ? <a href={work.href}>{work.name}</a> : work.name}
+                      {work.venue && <span className="venue">{work.venue}</span>}
+                    </p>
+                    <p>{keepTail(work.note)}</p>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="text-sm text-gray-700 mb-2">Research intern</p>
-            <ul className="list-disc pl-5 mt-2 text-gray-700 space-y-1 sm:tracking-[-0.01em]">
-              <li>
-                Proposed <strong><span className="italic">Ring Forcing</span></strong> (<span className="text-purple-700 font-bold">ECCV 2026</span>), a long-term-memory framework for autoregressive video diffusion that enables minute-scale generation with robust object permanence and precise retrieval of distant history.
-              </li>
-            </ul>
-            <p className="text-sm text-slate-500 mt-4">Long Video Generation, AR Diffusion</p>
-          </div>
+          </article>
+        ))}
+      </Section>
 
-          {/* MIT HAN Lab */}
-          <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md">
-            <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-1">
-              <p className="font-semibold text-lg text-slate-800">MIT HAN Lab</p>
-              <p className="text-sm text-gray-600">Apr. 2025 – Feb. 2026</p>
+      <Section id="projects" title="Projects">
+        {projects.map((project) => (
+          <article className="cv-row" id={`project-${project.id}`} key={project.id}>
+            <time className="cv-when">{projectDates[project.id]}</time>
+            <div>
+              <h3 className="cv-title">{project.title}</h3>
+              <p className="cv-sub"><Credit text={project.credit} /></p>
+              <p className="cv-text">{keepTail(project.description)}</p>
+              <TextLinks links={project.links} />
             </div>
-            <p className="text-sm text-gray-700 mb-2">Research intern (Remote)</p>
-            <ul className="list-disc pl-5 mt-2 text-gray-700 space-y-2">
-              <li>
-                Designed <strong><span className="italic">FourTune</span></strong> (<span className="text-purple-700 font-bold">ICML 2026</span>), the first training framework for diffusion models with 4-bit weights, activations, and gradients. Reduced VRAM usage by 2.25× and accelerated training by 2.27× on FLUX.1-dev compared to 16-bit LoRA, while supporting Qwen-Image. Achieved full-precision performance in Customization, RL, and Distillation tasks.
-              </li>
-              <li>
-                Core contributor to <Link href="https://github.com/nunchaku-tech/nunchaku" className="text-purple-700 font-bold hover:underline" target="_blank">nunchaku (3.7K Stars)</Link> and <Link href="https://github.com/nunchaku-tech/ComfyUI-nunchaku" className="text-purple-700 font-bold hover:underline" target="_blank">ComfyUI-nunchaku (2.8K Stars)</Link>. <br />
-                This library is an inference acceleration framework for 4-bit quantized diffusion models. Integrated PuLID into the nunchaku inference framework, significantly boosting inference speed and reducing VRAM usage while maintaining identity preservation and image quality.
-              </li>
-            </ul>
-            <p className="text-sm text-slate-500 mt-4">Diffusion Model, Quantization, Acceleration, Post-Training</p>
-          </div>
-
-          {/* Tencent */}
-          <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md">
-            <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-1">
-              <p className="font-semibold text-lg text-slate-800">Tencent</p>
-              <p className="text-sm text-gray-600">Nov. 2024 – Sep. 2025</p>
-            </div>
-            <p className="text-sm text-gray-700 mb-2">Research intern</p>
-            <ul className="list-disc pl-5 mt-2 text-gray-700 space-y-2">
-              <li>
-                Proposed <strong><span className="italic">Stand-In</span></strong> (<span className="text-purple-700 font-bold">CVPR 2026</span>), a lightweight and plug-and-play identity control framework for video generation, achieving SOTA face similarity and naturalness with minimal parameter and training costs.
-              </li>
-              <li>
-                Designed a identity-preserving image generation algorithm outperforming IP-Adapter and InstantID with a 4× inference speedup. Conducted large-scale SDXL fine-tuning for high-quality generation, successfully deploying the pipeline in <strong>WeChat Channels</strong>.
-              </li>
-            </ul>
-            <p className="text-sm text-slate-500 mt-4">AIGC, Video Generation, IP2V, IP2I, Diffusion Model</p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Others */}
-      <section>
-        <h2 className="text-xl font-semibold mb-3">Others</h2>
-        <div className="bg-white/70 backdrop-blur-md p-5 rounded-xl shadow-md text-gray-700">
-          <ul className="list-disc pl-5 space-y-2">
-            {/* <li><strong>GPA:</strong> 3.72 (Top 15%)</li> */}
-            <li><strong>Competition:</strong> CCKS2025 Large Model Generated Text Detection - Rank 1/1094 (Leaderboard A)</li>
-          </ul>
-        </div>
-      </section>
-    </motion.main>
+          </article>
+        ))}
+      </Section>
+    </main>
   );
 }
