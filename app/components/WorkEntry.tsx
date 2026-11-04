@@ -3,11 +3,11 @@ import { repoFromUrl } from '../github';
 import { StarBadge, StarCount } from './Stars';
 import Thumb from './Thumb';
 
-/** Keeps the last three words together, so no line ends with one or two words alone. */
-export function keepTail(text: string): string {
+/** Keeps the last few words together, so no line ends with one or two words alone. */
+export function keepTail(text: string, count = 3): string {
   const words = text.split(' ');
-  if (words.length < 6) return text;
-  return [...words.slice(0, -3), words.slice(-3).join('\u00a0')].join(' ');
+  if (words.length < 2 * count) return text;
+  return [...words.slice(0, -count), words.slice(-count).join('\u00a0')].join(' ');
 }
 
 /**
