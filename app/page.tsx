@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import ProfileLinks from './components/ProfileLinks';
+import StructuredData from './components/StructuredData';
 import WorkEntry from './components/WorkEntry';
 import { works } from './content';
+import { profile } from './profile';
 
 const external = { target: '_blank', rel: 'noopener noreferrer' } as const;
 
@@ -20,6 +22,7 @@ const news = [
 export default function HomePage() {
   return (
     <main id="main-content" className="page">
+      <StructuredData path="/" title={`${profile.name} (${profile.nameZh})`} />
       <section className="intro" aria-labelledby="name">
         <div className="intro-text">
           <h1 id="name">Bowen Xue<span lang="zh">薛博文</span></h1>

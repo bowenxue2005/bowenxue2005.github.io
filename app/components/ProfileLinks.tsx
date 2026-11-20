@@ -1,9 +1,10 @@
+import { profile } from '../profile';
 import { GitHubIcon, MailIcon, ScholarIcon } from './Icons';
 
 const profiles = [
-  { label: 'Email', href: 'mailto:bowenxue2005@gmail.com', icon: <MailIcon /> },
-  { label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=PLeb2oAAAAAJ&hl=en', icon: <ScholarIcon /> },
-  { label: 'GitHub', href: 'https://github.com/KBRASK', icon: <GitHubIcon /> },
+  { label: 'Email', href: `mailto:${profile.email}`, icon: <MailIcon /> },
+  { label: 'Google Scholar', href: profile.profiles.scholar, icon: <ScholarIcon /> },
+  { label: 'GitHub', href: profile.profiles.github, icon: <GitHubIcon /> },
 ];
 
 export default function ProfileLinks({ className = '' }: { className?: string }) {

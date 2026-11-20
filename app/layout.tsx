@@ -2,12 +2,12 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import Header from './components/Header';
+import { profile } from './profile';
 import { siteUrl } from './site';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 
-const description =
-  'Bowen Xue (薛博文), fourth-year undergraduate at USTC and research intern at Stanford, working on visual generation.';
+const { description } = profile;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -15,7 +15,11 @@ export const metadata: Metadata = {
   description,
   keywords: ['Bowen Xue', '薛博文', 'visual generation', 'video generation', 'diffusion models', 'USTC', 'Stanford'],
   authors: [{ name: 'Bowen Xue', url: siteUrl }],
-  alternates: { canonical: '/' },
+  alternates: {
+    canonical: '/',
+    // A plain-text summary of the whole site for AI assistants (llmstxt.org).
+    types: { 'text/plain': '/llms.txt' },
+  },
   openGraph: {
     type: 'website',
     url: siteUrl,

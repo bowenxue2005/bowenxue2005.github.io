@@ -169,3 +169,59 @@ export const works: Work[] = [
 
 export const papers = works.filter((work) => work.kind === 'paper');
 export const projects = works.filter((work) => work.kind === 'project');
+
+/** Research positions, newest first. The CV adds what was done at each. */
+export type Position = {
+  org: string;
+  when: string;
+  role: string;
+  /** Named after the role as "with Prof. …", and linked through `people`. */
+  advisor?: string;
+  topics: string;
+};
+
+export const experience: Position[] = [
+  {
+    org: 'Stanford University',
+    when: 'Jun 2026 – present',
+    role: 'Research intern',
+    advisor: 'Jiajun Wu',
+    topics: 'World Models, Controllable Video Generation',
+  },
+  {
+    org: 'ByteDance',
+    when: 'Sep 2025 – May 2026',
+    role: 'Research intern',
+    topics: 'Long Video Generation, Autoregressive Diffusion',
+  },
+  {
+    org: 'MIT HAN Lab',
+    when: 'Apr 2025 – Feb 2026',
+    role: 'Research intern, remote',
+    topics: 'Diffusion Models, Quantization, Efficient Post-Training',
+  },
+  {
+    org: 'Tencent',
+    when: 'Nov 2024 – Sep 2025',
+    role: 'Research intern',
+    topics: 'Identity-Preserving Generation, Video Generation, Diffusion Models',
+  },
+];
+
+/**
+ * Text for machines rather than for layout: non-breaking hyphens and spaces
+ * become ordinary ones, so "Plug‑and‑Play" matches what people type.
+ */
+export function plainText(text: string): string {
+  return text.replace(/‑/g, '-').replace(/ /g, ' ');
+}
+
+/** "A*, B, and C" → ["A", "B", "C"], without equal-contribution marks. */
+export function authorNames(credit: string): string[] {
+  return credit.split(/,\s+(?:and\s+)?|\s+and\s+/).map((name) => name.replace(/\*$/, ''));
+}
+
+/** "UniAction: Unified Action Conditioning for World Models". */
+export function fullTitle(work: Work): string {
+  return plainText(`${work.title}: ${work.subtitle}`);
+}
